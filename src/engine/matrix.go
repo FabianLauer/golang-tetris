@@ -41,12 +41,20 @@ func (m *Matrix) IsFieldOccupied(row int, col int) bool {
 // GetPieceOccupying returns the Piece that currently occupies a certain
 // row and column of the Matrix.
 func (m *Matrix) GetPieceOccupying(row int, col int) Piece {
+	// Check if a Piece's origin is at the requested row and column and
+	// return that piece if yes.
 	piece := m.pieces[row][col]
-
 	if piece != nil {
 		return piece
 	}
 
+	// Even though no Piece's origin is at the row and column, there
+	// could be neighbouring fields with a Piece that occupies the
+	// requested row and column.
+	// We loop through all neighbouring fields and check if any of the
+	// fields is the origin of a Piece. If we find such a Piece, we
+	// check if it also occupies the original row and column we're
+	// looking for in this method.
 	for rowOffset := uint8(0); rowOffset <= 3; rowOffset++ {
 		if row-int(rowOffset) < 0 {
 			continue
