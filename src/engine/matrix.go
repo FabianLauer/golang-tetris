@@ -5,7 +5,7 @@ package engine
 type Matrix struct {
 	Width  int
 	Height int
-	pieces [][]Piece
+	pieces [][]*Piece
 }
 
 // NewMatrix creates a new Matrix instance that can be used right away.
@@ -14,10 +14,10 @@ func NewMatrix(width int, height int) *Matrix {
 
 	matrix.Width = width
 	matrix.Height = height
-	matrix.pieces = make([][]Piece, height)
+	matrix.pieces = make([][]*Piece, height)
 
 	for row := 0; row < matrix.Height; row++ {
-		matrix.pieces[row] = make([]Piece, width)
+		matrix.pieces[row] = make([]*Piece, width)
 	}
 
 	return matrix
@@ -40,7 +40,7 @@ func (m *Matrix) IsFieldOccupied(row int, col int) bool {
 
 // GetPieceOccupying returns the Piece that currently occupies a certain
 // row and column of the Matrix.
-func (m *Matrix) GetPieceOccupying(row int, col int) Piece {
+func (m *Matrix) GetPieceOccupying(row int, col int) *Piece {
 	// Check if a Piece's origin is at the requested row and column and
 	// return that piece if yes.
 	piece := m.pieces[row][col]
@@ -71,7 +71,7 @@ func (m *Matrix) GetPieceOccupying(row int, col int) Piece {
 				continue
 			}
 
-			if piece.IsFieldWithOffsetOccupied(rowOffset, colOffset) {
+			if (*piece).IsFieldWithOffsetOccupied(rowOffset, colOffset) {
 				return piece
 			}
 		}
@@ -82,5 +82,5 @@ func (m *Matrix) GetPieceOccupying(row int, col int) Piece {
 
 // PlaceNewPieceAt places a new piece at a certain row and column of the Matrix.
 func (m *Matrix) PlaceNewPieceAt(row int, col int, piece Piece) {
-	m.pieces[row][col] = piece
+	m.pieces[row][col] = &piece
 }

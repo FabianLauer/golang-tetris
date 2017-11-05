@@ -36,7 +36,7 @@ func (renderer *SimpleMatrixRenderer) Render() {
 func (renderer *SimpleMatrixRenderer) renderOccupiedFieldAtCurrentCursorPos(row int, col int) {
 	piece := renderer.Matrix.GetPieceOccupying(row, col)
 
-	r, g, b := piece.GetColorAsRGB()
+	r, g, b := (*piece).GetColorAsRGB()
 	total := int(r) + int(g) + int(b)
 
 	character := "▧"
