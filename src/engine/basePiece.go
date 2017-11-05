@@ -36,6 +36,8 @@ func (p *BasePiece) IsFieldWithOffsetOccupied(rowOffset uint8, colOffset uint8) 
 			return p.self.IsFieldOccupied(PieceRow1Column2)
 		case 2:
 			return p.self.IsFieldOccupied(PieceRow1Column3)
+		case 3:
+			return p.self.IsFieldOccupied(PieceRow1Column4)
 		}
 
 	case 1:
@@ -46,6 +48,8 @@ func (p *BasePiece) IsFieldWithOffsetOccupied(rowOffset uint8, colOffset uint8) 
 			return p.self.IsFieldOccupied(PieceRow2Column2)
 		case 2:
 			return p.self.IsFieldOccupied(PieceRow2Column3)
+		case 3:
+			return p.self.IsFieldOccupied(PieceRow2Column4)
 		}
 
 	case 2:
@@ -56,6 +60,8 @@ func (p *BasePiece) IsFieldWithOffsetOccupied(rowOffset uint8, colOffset uint8) 
 			return p.self.IsFieldOccupied(PieceRow3Column2)
 		case 2:
 			return p.self.IsFieldOccupied(PieceRow3Column3)
+		case 3:
+			return p.self.IsFieldOccupied(PieceRow3Column4)
 		}
 
 	case 3:
@@ -66,6 +72,8 @@ func (p *BasePiece) IsFieldWithOffsetOccupied(rowOffset uint8, colOffset uint8) 
 			return p.self.IsFieldOccupied(PieceRow4Column2)
 		case 2:
 			return p.self.IsFieldOccupied(PieceRow4Column3)
+		case 3:
+			return p.self.IsFieldOccupied(PieceRow4Column4)
 		}
 	}
 
